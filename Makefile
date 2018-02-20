@@ -6,7 +6,7 @@
 #    By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:20:23 by oozkaya           #+#    #+#              #
-#    Updated: 2018/02/20 15:20:27 by oozkaya          ###   ########.fr        #
+#    Updated: 2018/02/20 22:31:38 by oozkaya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,24 +43,22 @@ LDLIBS = -lft
 # Sources
 SRC_NAME = \
 		   ft_all_printf.c\
+		   ft_all_printf2.c\
 		   ft_core_printf.c\
 		   \
 		   d_arg.c\
-		   int_arg_tools.c\
-		   \
 		   u_o_arg.c\
-		   \
 		   p_x_arg.c\
-		   \
 		   wc_c_arg.c\
-		   \
 		   ws_s_arg.c\
 		   \
+		   int_arg_tools.c\
 		   unicode.c\
 		   \
 		   buffer.c\
 		   \
 		   parser.c\
+		   \
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:18 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 20:01:01 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 22:15:37 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,27 @@ int		ft_printf(const char *format, ...)
 }
 
 /*
-** Exact analogs of ft_printf, except that it outputs to a file descriptor "fd"
+** Same as ft_printf except that it is called with a va_list
+** instead of a variable number of arguments
+*/
+
+int		ft_vprintf(const char *format, va_list ap)
+{
+	t_buffer	buf;
+	int			ret;
+
+	buffer_init(&buf);
+	buf.fd = 1;
+	if ((ret = ft_core_printf(&buf, (char*)format, ap)) < 0)
+		return (-1);
+	write(buf.fd, buf.str, ret);
+	ft_memdel((void **)&buf.str);
+	return (ret);
+}
+
+/*
+** Exact analogs of ft_printf and ft_vprintf,
+** except that they output to a file descriptor "fd"
 **
 ** Return : Same as ft_printf
 */
