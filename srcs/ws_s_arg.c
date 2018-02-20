@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:18:36 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 19:54:07 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 21:36:09 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ static int	ws_arg_unicode(char *bytes, wchar_t *arg, char *str, t_format *fmt)
 		if ((total = unicode_mask_applier(bytes, *arg)) == -1)
 			return (-1);
 		tmp += total;
-		if (fmt->prec < tmp && fmt->prec_dot_activated)
+		if ((fmt->prec < tmp) && fmt->prec_dot_activated)
 			break ;
 		ft_memmove(str + index, bytes, total);
 		index += total;
 		arg++;
 	}
+	str[index] = '\0';
 	ft_memdel((void**)&bytes);
 	return (1);
 }
