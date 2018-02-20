@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:21:54 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 15:21:58 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:43:02 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Checks for the right argument according to the type size
+**
+** Return : The argument
+*/
 
 static char	*type_size_apply(t_format *fmt, va_list ap)
 {
@@ -35,6 +41,12 @@ static char	*type_size_apply(t_format *fmt, va_list ap)
 	arg = ft_itoa_base(n, 10);
 	return (arg);
 }
+
+/*
+** Handles all the fields (flags, width, precision) for the conversion %d
+**
+** Return : Always '1' if successful
+*/
 
 int			d_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {

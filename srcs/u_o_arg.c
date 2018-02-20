@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:21:32 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 13:30:19 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:46:24 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Checks for the right argument and applies the right flags
+**
+** Return : The argument
+*/
 
 static char	*arg_checker(uintmax_t n, t_format *fmt)
 {
@@ -27,6 +33,12 @@ static char	*arg_checker(uintmax_t n, t_format *fmt)
 		arg = ft_utoa_base(n, 8);
 	return (arg);
 }
+
+/*
+** Checks for the right argument according to the type size
+**
+** Return : The argument
+*/
 
 static char	*type_size_apply(t_format *fmt, va_list ap)
 {
@@ -51,6 +63,12 @@ static char	*type_size_apply(t_format *fmt, va_list ap)
 	return (arg);
 }
 
+/*
+** Resizes the filling size according to the fields
+**
+** Return : The resized size
+*/
+
 static void	u_o_arg_resizer(int *size1, int *size2, t_format *fmt, char *arg)
 {
 	int		tmp;
@@ -66,6 +84,12 @@ static void	u_o_arg_resizer(int *size1, int *size2, t_format *fmt, char *arg)
 	else
 		*size2 = *size1;
 }
+
+/*
+** Handles all the fields (flags, width, precision) for the conversion %u and %o
+**
+** Return : Always '1' if successful
+*/
 
 int			u_o_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {

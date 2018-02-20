@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:20:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 15:20:47 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:57:16 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int				unicode_mask_applier(char *bytes, wchar_t arg);
 int				ft_bytelen(wchar_t arg);
 
 int				ft_printf(const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
 int				ft_vdprintf(int fd, const char *format, va_list ap);
 int				ft_core_printf(t_buffer *buf, char *format, va_list ap);
 

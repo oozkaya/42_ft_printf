@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:48 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 15:22:53 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 18:58:42 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Checks all the conditions related to the precision field
+**
+** Return : void
+*/
 
 void	check_prec(int *check, t_format *fmt, char *arg)
 {
@@ -27,6 +33,13 @@ void	check_prec(int *check, t_format *fmt, char *arg)
 	if (fmt->prec == fmt->width && fmt->prec_activated)
 		fmt->tmp3 = 1;
 }
+
+/*
+** Applies all the conditions related to the precision field
+** Usually adds zeros according to the argument and the fields
+**
+** Return : void
+*/
 
 void	add_prec(t_buffer *buf, t_format *fmt, char *arg, int size)
 {
@@ -55,6 +68,12 @@ void	add_prec(t_buffer *buf, t_format *fmt, char *arg, int size)
 		buffer_add_char(buf, '0', size2);
 }
 
+/*
+** Handles the argument sign
+**
+** Return : void
+*/
+
 void	int_arg_sign(t_buffer *buf, t_format *fmt, char *arg)
 {
 	char	sign;
@@ -65,6 +84,12 @@ void	int_arg_sign(t_buffer *buf, t_format *fmt, char *arg)
 	else if (fmt->plus || fmt->space)
 		buffer_add_char(buf, sign, 1);
 }
+
+/*
+** Calculates the filling size (with zeros or spaces) according to the fields
+**
+** Return : The filling size
+*/
 
 int		int_arg_filling_size(t_format *fmt, char *arg)
 {

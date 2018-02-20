@@ -6,11 +6,18 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:31 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 15:22:34 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 18:47:15 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Does a parsing to get the right function according to the conversion given
+**
+** Return : If successful, returns '1'
+** 			If not, returns '-1'
+*/
 
 static int	function_parser(t_buffer *buf, t_format *fmt, va_list ap)
 {
@@ -36,6 +43,12 @@ static int	function_parser(t_buffer *buf, t_format *fmt, va_list ap)
 	return (-1);
 }
 
+/*
+** Parses the "format" to check all the existing fields (flags, width, etc...)
+**
+** Return : The "format" left after the parsing
+*/
+
 static char	*parse_all(char *format, t_format *fmt, va_list ap)
 {
 	if (*format == '\0')
@@ -48,6 +61,14 @@ static char	*parse_all(char *format, t_format *fmt, va_list ap)
 		return (format);
 	return (format + 1);
 }
+
+/*
+** Main function serving all the other "ft_printf and cie" functions
+** Parses the "format" with the functions above
+**
+** Return : If successful, returns the buffer len at the end
+** 			If not, returns '-1'
+*/
 
 int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 {

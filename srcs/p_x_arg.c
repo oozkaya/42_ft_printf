@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:21:03 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/15 22:46:46 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:41:35 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Checks for the right argument and applies the right flags
+**
+** Return : The argument
+*/
 
 static char	*arg_checker(uintmax_t n, t_format *fmt)
 {
@@ -25,6 +31,12 @@ static char	*arg_checker(uintmax_t n, t_format *fmt)
 		arg = ft_strupr(arg);
 	return (arg);
 }
+
+/*
+** Checks for the right argument according to the type size
+**
+** Return : The argument
+*/
 
 static char	*type_size_apply(t_format *fmt, va_list ap)
 {
@@ -51,6 +63,12 @@ static char	*type_size_apply(t_format *fmt, va_list ap)
 	return (arg);
 }
 
+/*
+** Resizes the filling size according to the fields
+**
+** Return : The resized size
+*/
+
 static int	p_x_arg_resizer(int *check, t_format *fmt, char *arg)
 {
 	int		size;
@@ -73,6 +91,12 @@ static int	p_x_arg_resizer(int *check, t_format *fmt, char *arg)
 	size = (size < 0) ? 0 : size;
 	return (size);
 }
+
+/*
+** Handles all the fields (flags, width, precision) for the conversion %p and %x
+**
+** Return : Always '1' if successful
+*/
 
 int			p_x_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {

@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:18:36 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/15 23:09:12 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:54:07 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Handles the conversion %S buffer filling process
+**
+** Return : void
+*/
 
 static void	ws_buffer_add(t_buffer *buf, t_format *fmt, char *str)
 {
@@ -27,6 +33,13 @@ static void	ws_buffer_add(t_buffer *buf, t_format *fmt, char *str)
 		buffer_add_char(buf, fill, size);
 	ft_memdel((void**)&str);
 }
+
+/*
+** Handles the unicode process for the conversion %S
+**
+** Return : If successful, returns '1'
+** 			If not, returns '-1'
+*/
 
 static int	ws_arg_unicode(char *bytes, wchar_t *arg, char *str, t_format *fmt)
 {
@@ -51,6 +64,13 @@ static int	ws_arg_unicode(char *bytes, wchar_t *arg, char *str, t_format *fmt)
 	return (1);
 }
 
+/*
+** Handles all the possible fields for the conversion %S
+**
+** Return : If successful, returns '1'
+** 			If not, returns '-1'
+*/
+
 int			ws_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {
 	wchar_t	*arg;
@@ -68,6 +88,12 @@ int			ws_arg(t_buffer *buf, t_format *fmt, va_list ap)
 	ws_buffer_add(buf, fmt, str);
 	return (1);
 }
+
+/*
+** Handles the conversion %s buffer filling process
+**
+** Return : void
+*/
 
 static void	s_buffer_add(t_buffer *buf, t_format *fmt, char *str, char *arg)
 {
@@ -97,6 +123,13 @@ static void	s_buffer_add(t_buffer *buf, t_format *fmt, char *str, char *arg)
 	if (fmt->minus)
 		buffer_add_char(buf, fill, size);
 }
+
+/*
+** Handles all the possible fields for the conversion %s
+**
+** Return : If successful, returns '1'
+** 			If not, returns '-1'
+*/
 
 int			s_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {

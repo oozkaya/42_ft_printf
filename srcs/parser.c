@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:23:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 15:23:46 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:45:54 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Parses the "format" to check all the existing flags (' ', '0', '+', '-', '#')
+**
+** Return : The "format" left after the parsing
+*/
 
 char	*flags_parser(char *format, t_format *fmt)
 {
@@ -33,6 +39,12 @@ char	*flags_parser(char *format, t_format *fmt)
 	}
 	return (format);
 }
+
+/*
+** Parses the "format" to check the width field
+**
+** Return : The "format" left after the parsing
+*/
 
 char	*width_parser(char *format, t_format *fmt, va_list ap)
 {
@@ -57,6 +69,12 @@ char	*width_parser(char *format, t_format *fmt, va_list ap)
 	}
 	return (format);
 }
+
+/*
+** Parses the "format" to check the precision field
+**
+** Return : The "format" left after the parsing
+*/
 
 char	*precision_parser(char *format, t_format *fmt, va_list ap)
 {
@@ -84,6 +102,12 @@ char	*precision_parser(char *format, t_format *fmt, va_list ap)
 	return (format);
 }
 
+/*
+** Parses the "format" to check the type size
+**
+** Return : The "format" left after the parsing
+*/
+
 char	*type_size_parser(char *format, t_format *fmt)
 {
 	char	c;
@@ -109,6 +133,12 @@ char	*type_size_parser(char *format, t_format *fmt)
 	return (format);
 }
 
+/*
+** Parses the "format" to check the conversion field
+**
+** Return : If an error occured, returns 0
+*/
+
 int		conv_parser(char c, t_format *fmt)
 {
 	if (c == 'd' || c == 'i')
@@ -116,6 +146,8 @@ int		conv_parser(char c, t_format *fmt)
 	else if (c == 'c' || c == 's' || c == 'S' || c == 'C' || c == '%')
 		fmt->conv = c;
 	else if (c == 'o' || c == 'u' || c == 'x' || c == 'X' || c == 'p')
+		fmt->conv = c;
+	else if (c == 'b')
 		fmt->conv = c;
 	else if (c == 'D' || c == 'O' || c == 'U')
 	{

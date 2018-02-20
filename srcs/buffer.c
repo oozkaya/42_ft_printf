@@ -6,11 +6,18 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:06 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 15:22:09 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 20:01:25 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Initializes the buffer with a size equal to BUFFER_SIZE
+** that can be modified in the "ft_printf.h" header
+**
+** Return : void
+*/
 
 void	buffer_init(t_buffer *buf)
 {
@@ -20,6 +27,13 @@ void	buffer_init(t_buffer *buf)
 	buf->len = 0;
 	buf->fd = 0;
 }
+
+/*
+** Adds a character in the buffer as many times as the given "size"
+** If BUFFER_SIZE is exceeded, we double the size of the buffer
+**
+** Return : void
+*/
 
 void	buffer_add_char(t_buffer *buf, char c, size_t size)
 {
@@ -38,6 +52,14 @@ void	buffer_add_char(t_buffer *buf, char c, size_t size)
 	buf->len += size;
 	buf->str[buf->index] = '\0';
 }
+
+/*
+** Adds a string in the buffer as big as the given "size"
+** Thus a "size" smaller than the string's size will cut the string
+** If BUFFER_SIZE is exceeded, we double the size of the buffer
+**
+** Return : void
+*/
 
 void	buffer_add_str(t_buffer *buf, char *str, size_t size)
 {

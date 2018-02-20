@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:25:15 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 15:12:51 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:34:27 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Checks for the size in bits of the argument
+**
+** Return : The size in bits
+*/
 
 static int	ft_bitlen(unsigned int n)
 {
@@ -24,6 +30,12 @@ static int	ft_bitlen(unsigned int n)
 	}
 	return (c);
 }
+
+/*
+** Checks for the size in Bytes of the argument
+**
+** Return : The size in Bytes
+*/
 
 int			ft_bytelen(wchar_t arg)
 {
@@ -44,6 +56,12 @@ int			ft_bytelen(wchar_t arg)
 		return (4);
 	return (-1);
 }
+
+/*
+** Applies unicode masks to the argument according to the size in Bytes
+**
+** Return : The number of Bytes
+*/
 
 int			unicode_mask_applier(char *byte, wchar_t arg)
 {

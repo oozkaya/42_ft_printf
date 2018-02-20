@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:18:48 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 14:09:44 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/20 19:43:47 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Handles all the possible fields for the conversion %c
+**
+** Return : Always '1' if successful
+*/
 
 int		c_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {
@@ -33,6 +39,13 @@ int		c_arg(t_buffer *buf, t_format *fmt, va_list ap)
 		buffer_add_char(buf, fill, size);
 	return (1);
 }
+
+/*
+** Handles all the possible fields for the conversion %C
+**
+** Return : If successful, returns '1'
+** 			If not, returns '-1'
+*/
 
 int		wc_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {
@@ -60,6 +73,12 @@ int		wc_arg(t_buffer *buf, t_format *fmt, va_list ap)
 	ft_memdel((void**)&bytes);
 	return (1);
 }
+
+/*
+** Handles all the possible fields for the conversion %%
+**
+** Return : Always '1' if successful
+*/
 
 int		pct_arg(t_buffer *buf, t_format *fmt, va_list ap)
 {
