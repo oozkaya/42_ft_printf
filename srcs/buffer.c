@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:06 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 20:01:25 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/22 15:19:27 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	buffer_init(t_buffer *buf)
 	buf->index = 0;
 	buf->len = 0;
 	buf->fd = 0;
+	buf->color_len = 0;
 }
 
 /*

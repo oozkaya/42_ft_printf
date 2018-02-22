@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:20:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 22:29:46 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/22 15:18:08 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct	s_buffer
 	int			index;
 	int			len;
 	int			fd;
+	int			color_len;
 }				t_buffer;
 
 typedef struct	s_conv
@@ -49,6 +50,14 @@ typedef struct	s_conv
 	char	*conversion;
 	int		(*arg)(t_buffer*, t_format*, va_list);
 }				t_conv;
+
+typedef struct	s_color
+{
+	char	*clr;
+	char	*clr_code;
+}				t_color;
+
+char			*color_parser(t_buffer *buf, char *format);
 
 void			check_prec(int *check, t_format *fmt, char *arg);
 void			add_prec(t_buffer *buf, t_format *fmt, char *arg, int size);
@@ -71,6 +80,8 @@ int				ft_printf(const char *format, ...);
 int				ft_vprintf(const char *format, va_list ap);
 int				ft_dprintf(int fd, const char *format, ...);
 int				ft_vdprintf(int fd, const char *format, va_list ap);
+int				ft_asprintf(char **str, const char *format, ...);
+int				ft_vasprintf(char **str, const char *format, va_list ap);
 int				ft_sprintf(char *str, const char *format, ...);
 int				ft_vsprintf(char *str, const char *format, va_list ap);
 int				ft_snprintf(char *str, size_t size, const char *format, ...);

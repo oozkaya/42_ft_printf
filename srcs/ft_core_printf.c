@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:31 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 18:47:15 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/22 15:20:10 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,25 @@ static char	*parse_all(char *format, t_format *fmt, va_list ap)
 ** Return : If successful, returns the buffer len at the end
 ** 			If not, returns '-1'
 */
-
+#include <stdio.h>
 int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 {
 	t_format	fmt;
 	char		*conv;
+	char		*color;
 
+/*	if ((color = ft_strchr(format, '{')) != NULL)
+	{
+		buffer_add_str(buf, format, color - format);
+		format = color_parser(buf, color);
+	}*/
 	while ((conv = ft_strchr(format, '%')) != NULL)
 	{
+		if ((color = ft_strchr(format, '{')) != NULL)
+		{
+			buffer_add_str(buf, format, color - format);
+			format = color_parser(buf, color);
+		}
 		ft_bzero(&fmt, sizeof(fmt));
 		buffer_add_str(buf, format, conv - format);
 		format = parse_all(conv + 1, &fmt, ap);
@@ -88,8 +99,23 @@ int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 				return (-1);
 			}
 		}
+		if ((color = ft_strchr(format, '{')) != NULL)
+		{
+			buffer_add_str(buf, format, color - format);
+			format = color_parser(buf, color);
+		}
+	}
+	while ((color = ft_strchr(format, '{')) != NULL)
+	{
+		buffer_add_str(buf, format, color - format);
+		format = color_parser(buf, color);
 	}
 	if (*format != '\0')
-		buffer_add_str(buf, format, ft_strlen(format));
+		buffer_add_str(buf, format, ft_strlen(format));/*
+	if ((color = ft_strchr(format, '{')) != NULL)
+	{
+		buffer_add_str(buf, format, color - format);
+		format = color_parser(buf, color);
+	}*/
 	return (buf->len);
 }

@@ -6,7 +6,7 @@
 #    By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:20:23 by oozkaya           #+#    #+#              #
-#    Updated: 2018/02/20 22:31:38 by oozkaya          ###   ########.fr        #
+#    Updated: 2018/02/22 10:47:00 by oozkaya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ LDLIBS = -lft
 SRC_NAME = \
 		   ft_all_printf.c\
 		   ft_all_printf2.c\
+		   ft_all_printf3.c\
 		   ft_core_printf.c\
 		   \
 		   d_arg.c\
