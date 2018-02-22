@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:31 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 15:20:10 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/22 23:46:52 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,11 @@ int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 {
 	t_format	fmt;
 	char		*conv;
-	char		*color;
 
-/*	if ((color = ft_strchr(format, '{')) != NULL)
-	{
-		buffer_add_str(buf, format, color - format);
-		format = color_parser(buf, color);
-	}*/
+//	format = color_applier2(buf, format);
 	while ((conv = ft_strchr(format, '%')) != NULL)
 	{
-		if ((color = ft_strchr(format, '{')) != NULL)
-		{
-			buffer_add_str(buf, format, color - format);
-			format = color_parser(buf, color);
-		}
+		format = color_applier1(buf, format);
 		ft_bzero(&fmt, sizeof(fmt));
 		buffer_add_str(buf, format, conv - format);
 		format = parse_all(conv + 1, &fmt, ap);
@@ -99,23 +90,13 @@ int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 				return (-1);
 			}
 		}
-		if ((color = ft_strchr(format, '{')) != NULL)
-		{
-			buffer_add_str(buf, format, color - format);
-			format = color_parser(buf, color);
-		}
+//		printf("format before color_applier1 = %s", format);
+		format = color_applier1(buf, format);
+//		printf("format after color_applier1 = %s", format);
 	}
-	while ((color = ft_strchr(format, '{')) != NULL)
-	{
-		buffer_add_str(buf, format, color - format);
-		format = color_parser(buf, color);
-	}
+//	printf("format before color_applier2 = %s", format);
+	format = color_applier2(buf, format);
 	if (*format != '\0')
-		buffer_add_str(buf, format, ft_strlen(format));/*
-	if ((color = ft_strchr(format, '{')) != NULL)
-	{
-		buffer_add_str(buf, format, color - format);
-		format = color_parser(buf, color);
-	}*/
+		buffer_add_str(buf, format, ft_strlen(format));
 	return (buf->len);
 }

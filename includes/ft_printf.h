@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:20:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 15:18:08 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/22 21:05:52 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ typedef struct	s_buffer
 	int			index;
 	int			len;
 	int			fd;
-	int			color_len;
+	int			clr_len;
+	int			clr_counter;
+	int			clr_check;
+	int			clr_check2;
 }				t_buffer;
 
 typedef struct	s_conv
@@ -57,7 +60,8 @@ typedef struct	s_color
 	char	*clr_code;
 }				t_color;
 
-char			*color_parser(t_buffer *buf, char *format);
+char			*color_applier1(t_buffer *buf, char *format);
+char			*color_applier2(t_buffer *buf, char *format);
 
 void			check_prec(int *check, t_format *fmt, char *arg);
 void			add_prec(t_buffer *buf, t_format *fmt, char *arg, int size);

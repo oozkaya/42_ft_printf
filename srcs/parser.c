@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:23:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 15:25:04 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/22 15:55:19 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,58 +160,4 @@ int		conv_parser(char c, t_format *fmt)
 		fmt->no_conv = c;
 	}
 	return (fmt->conv != 0);
-}
-#include <stdio.h>
-char	*color_parser(t_buffer *buf, char *format)
-{
-	char					c;
-	int						i;
-	char					tab[8];
-	int						color_len;
-	static const t_color	tab_color[] = {{ "eoc", "\033[0m" },
-		{ "black", "\033[30m" },
-		{ "red", "\033[31m" },
-		{ "green", "\033[32m" },
-		{ "brown", "\033[33m" },
-		{ "blue", "\033[34m" },
-		{ "magenta", "\033[35m" },
-		{ "cyan", "\033[36m" },
-		{ "gray", "\033[37m" },
-		{ NULL, NULL }
-	};
-//	if (format[0] == '{' && format[1] == '{')
-//		return (format);
-	//ft_putstr("OK\n");
-	i = 0;
-	c = *format;
-	if (c == '{')
-	{
-		c = *++format;
-		while (c != '}')
-		{
-			tab[i++] = ft_tolower(c);
-			c = *++format;
-		}
-		if (c == '}')
-			format++;
-	}
-	tab[i] = '\0';
-	//ft_putstr("tab = |");
-	//ft_putstr(tab);
-	//ft_putstr("|\n");
-	//ft_putstr("OK2\n");
-	//printf("tab = %s", tab);
-	i = 0;
-	while (tab_color[i].clr)
-	{
-		if (ft_strequ(tab_color[i].clr, tab))
-		{
-			color_len = ft_strlen(tab_color[i].clr_code); 
-			buffer_add_str(buf, tab_color[i].clr_code, color_len);
-			buf->color_len += color_len;
-		}
-		i++;
-	}
-	//ft_putstr(buf->str);
-	return (format);
 }

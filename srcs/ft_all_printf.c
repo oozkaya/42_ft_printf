@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:18 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 15:20:46 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/22 23:47:49 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_printf(const char *format, ...)
 	va_end(ap);
 	write(buf.fd, buf.str, ret);
 	ft_memdel((void**)&buf.str);
-	return (ret - buf.color_len);
+	return (ret - buf.clr_len);
 }
 
 /*
