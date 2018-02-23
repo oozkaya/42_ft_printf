@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:21:03 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/20 19:41:35 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 18:06:18 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int			p_x_arg(t_buffer *buf, t_format *fmt, va_list ap)
 
 	check = 0;
 	arg = type_size_apply(fmt, ap);
-	fill = (fmt->zero && !fmt->minus) ? '0' : ' ';
 	size = p_x_arg_resizer(&check, fmt, arg);
+	fill = (fmt->zero && !fmt->minus) ? '0' : ' ';
 	if (!fmt->minus && !fmt->zero)
 		buffer_add_char(buf, fill, size);
 	if (fmt->hashtag)
