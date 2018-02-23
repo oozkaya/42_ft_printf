@@ -6,7 +6,7 @@
 #    By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:20:23 by oozkaya           #+#    #+#              #
-#    Updated: 2018/02/22 18:11:44 by oozkaya          ###   ########.fr        #
+#    Updated: 2018/02/23 12:04:22 by oozkaya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRC_NAME = \
 			parser.c\
 			\
 			colors.c\
+			color_appliers.c\
 			\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:31 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 23:46:52 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 12:01:32 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,17 @@ static char	*parse_all(char *format, t_format *fmt, va_list ap)
 
 /*
 ** Main function serving all the other "ft_printf and cie" functions
-** Parses the "format" with the functions above
+** Parses the "format" with the functions above and the color functions
 **
 ** Return : If successful, returns the buffer len at the end
 ** 			If not, returns '-1'
 */
-#include <stdio.h>
+
 int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 {
 	t_format	fmt;
 	char		*conv;
 
-//	format = color_applier2(buf, format);
 	while ((conv = ft_strchr(format, '%')) != NULL)
 	{
 		format = color_applier1(buf, format);
@@ -90,11 +89,8 @@ int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 				return (-1);
 			}
 		}
-//		printf("format before color_applier1 = %s", format);
 		format = color_applier1(buf, format);
-//		printf("format after color_applier1 = %s", format);
 	}
-//	printf("format before color_applier2 = %s", format);
 	format = color_applier2(buf, format);
 	if (*format != '\0')
 		buffer_add_str(buf, format, ft_strlen(format));

@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:18 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 23:47:49 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 12:06:25 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_vprintf(const char *format, va_list ap)
 		return (-1);
 	write(buf.fd, buf.str, ret);
 	ft_memdel((void **)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }
 
 /*
@@ -77,7 +77,7 @@ int		ft_dprintf(int fd, const char *format, ...)
 	va_end(ap);
 	write(buf.fd, buf.str, ret);
 	ft_memdel((void**)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }
 
 int		ft_vdprintf(int fd, const char *format, va_list ap)
@@ -91,5 +91,5 @@ int		ft_vdprintf(int fd, const char *format, va_list ap)
 		return (-1);
 	write(buf.fd, buf.str, ret);
 	ft_memdel((void**)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }

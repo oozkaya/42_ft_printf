@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 10:36:13 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 17:05:57 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 12:07:06 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_sprintf(char *str, const char *format, ...)
 	va_end(ap);
 	ft_memmove(str, buf.str, ft_strlen(buf.str));
 	ft_memdel((void **)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }
 
 int		ft_vsprintf(char *str, const char *format, va_list ap)
@@ -45,7 +45,7 @@ int		ft_vsprintf(char *str, const char *format, va_list ap)
 		return (-1);
 	ft_memmove(str, buf.str, ft_strlen(buf.str));
 	ft_memdel((void **)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }
 
 /*
@@ -66,7 +66,7 @@ int		ft_snprintf(char *str, size_t size, const char *format, ...)
 	va_end(ap);
 	ft_memmove(str, buf.str, size - 1);
 	ft_memdel((void **)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }
 
 int		ft_vsnprintf(char *str, size_t size, const char *format, va_list ap)
@@ -79,5 +79,5 @@ int		ft_vsnprintf(char *str, size_t size, const char *format, va_list ap)
 		return (-1);
 	ft_memmove(str, buf.str, size - 1);
 	ft_memdel((void **)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }

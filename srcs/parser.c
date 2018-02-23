@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:23:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 15:55:19 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 13:19:02 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,24 @@ char	*flags_parser(char *format, t_format *fmt)
 
 char	*width_parser(char *format, t_format *fmt, va_list ap)
 {
-	char	c;
-
-	c = *format;
-	if (c == '*')
+	while (ft_isdigit(*format) || *format == '*')
 	{
-		fmt->width = va_arg(ap, int);
-		if (fmt->width < 0)
+		if (ft_isdigit(*format))
+			fmt->width = 0;
+		while (ft_isdigit(*format))
 		{
-			fmt->minus = 1;
-			fmt->width = -(fmt->width);
+			fmt->width = fmt->width * 10 + (*format - '0');
+			format++;
 		}
-		format++;
-		return (format);
-	}
-	while (ft_isdigit(c))
-	{
-		fmt->width = fmt->width * 10 + (c - '0');
-		c = *++format;
+		if (*format == '*')
+		{
+			if ((fmt->width = va_arg(ap, int)) < 0)
+			{
+				fmt->minus = 1;
+				fmt->width = -(fmt->width);
+			}
+			format++;
+		}
 	}
 	return (format);
 }

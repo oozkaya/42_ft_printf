@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:20:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 21:05:52 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 12:03:49 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct	s_color
 	char	*clr_code;
 }				t_color;
 
+char			*ft_tab_color(t_buffer *buf, char *format);
 char			*color_applier1(t_buffer *buf, char *format);
 char			*color_applier2(t_buffer *buf, char *format);
 

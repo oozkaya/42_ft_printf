@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 22:03:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/22 12:47:45 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 12:08:02 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_asprintf(char **str, const char *format, ...)
 	if (!(*str = ft_strdup(buf.str)))
 		return (-1);
 	ft_memdel((void **)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }
 
 int		ft_vasprintf(char **str, const char *format, va_list ap)
@@ -47,5 +47,5 @@ int		ft_vasprintf(char **str, const char *format, va_list ap)
 	if (!(*str = ft_strdup(buf.str)))
 		return (-1);
 	ft_memdel((void **)&buf.str);
-	return (ret);
+	return (ret - buf.clr_len);
 }
