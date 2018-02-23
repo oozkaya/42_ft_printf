@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:21:03 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 18:06:18 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 18:25:27 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	p_x_arg_resizer(int *check, t_format *fmt, char *arg)
 {
 	int		size;
 
-	if (fmt->prec > 0)
+	if (fmt->prec >= 0 && fmt->prec_dot_activated)
 		fmt->zero = 0;
 	if (fmt->prec == 0 && fmt->prec_dot_activated == 1
 			&& ft_strequ(arg, "0") && !fmt->plus)
