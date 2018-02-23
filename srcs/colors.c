@@ -6,11 +6,18 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:54:34 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 12:09:06 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 14:50:11 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Checks for all the non_color cases (like "{}")
+** Adds the "tab" of the non_color to the buffer, filled or not
+**
+** Return : The "format" after the parsing
+*/
 
 static char	*is_not_color(t_buffer *buf, char *tab, char *format)
 {
@@ -27,19 +34,23 @@ static char	*is_not_color(t_buffer *buf, char *tab, char *format)
 	{
 		j = 1;
 		while (format[j] != '}')
-		{
 			tab[i++] = format[j++];
-		}
 		if (format[j] == '}')
-		{
 			tab[i++] = format[j++];
-		}
 		buf->clr_check2 = ft_strlen(tab);
 	}
 	tab[i] = '\0';
 	buffer_add_str(buf, tab, ft_strlen(tab));
 	return (format);
 }
+
+/*
+** If the color is existing, stores it into "tab"
+** If the color name is longer than the maximun allowed, then nothing is done
+** and we return the beginning format to be treated like a normal string
+**
+** Return : The "format" after the parsing
+*/
 
 static char	*is_color(t_buffer *buf, char *tab, char *format)
 {
@@ -69,6 +80,14 @@ static char	*is_color(t_buffer *buf, char *tab, char *format)
 	return (format);
 }
 
+/*
+** Main color parsing function
+** Checks if the word between the brackets ('{' and '}') is a color or not,
+** and then finds out which color code we need if it's a real color
+**
+** Return : The "format" after the parsing
+*/
+
 static char	*color_parser(t_buffer *buf, const t_color *tab_color, char *tab,
 							char *format)
 {
@@ -97,6 +116,12 @@ static char	*color_parser(t_buffer *buf, const t_color *tab_color, char *tab,
 	buf->clr_check = 1;
 	return (begin);
 }
+
+/*
+** Initializes "tab_color" and "buf->clr" variables for the parsing
+**
+** Return : The "format" after the parsing
+*/
 
 char		*ft_tab_color(t_buffer *buf, char *format)
 {

@@ -6,11 +6,17 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 12:00:06 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 12:09:47 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 14:43:25 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** 1st color applier function that we use inside the ft_printf_core loop
+**
+** Return : The "format" after the parsing
+*/
 
 char	*color_applier1(t_buffer *buf, char *format)
 {
@@ -39,6 +45,12 @@ char	*color_applier1(t_buffer *buf, char *format)
 	}
 	return (format);
 }
+
+/*
+** 2nd color applier that we use outside the fr_printf_core loop
+**
+** Return : The "format" after the parsing
+*/
 
 char	*color_applier2(t_buffer *buf, char *format)
 {
