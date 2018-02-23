@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:23:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 13:19:02 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/02/23 17:22:08 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,8 @@ char	*type_size_parser(char *format, t_format *fmt)
 /*
 ** Parses the "format" to check the conversion field
 **
-** Return : If an error occured, returns 0
+** Return : If successful, returns the conversion
+** 			If not, returns '0'
 */
 
 int		conv_parser(char c, t_format *fmt)
@@ -154,10 +155,10 @@ int		conv_parser(char c, t_format *fmt)
 		fmt->type_size = 'L';
 		fmt->conv = c + 32;
 	}
-	else
+	else if (c != 0)
 	{
 		fmt->conv = 'c';
 		fmt->no_conv = c;
 	}
-	return (fmt->conv != 0);
+	return (fmt->conv);
 }
