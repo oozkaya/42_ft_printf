@@ -20,10 +20,16 @@ Bonus :
 > ex: **{red}test{eoc}** affichera **"test" en rouge**, **{{green}}** affichera le mot **"{green}"** simplement.
 
 
-# TEST
+# Utilisation
+
+> $> git submodule init
+
+> $> git submodule update
+
+puis :
 
 > $> make
 
->$> make test     (ou 'make test FLAGS=no' pour les undefined behavior)
+> $> make test     (ou 'make test FLAGS=no' pour les undefined behavior)
 
 > $> ./a.out
