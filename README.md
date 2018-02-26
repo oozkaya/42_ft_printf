@@ -19,10 +19,11 @@ Bonus :
 * **couleurs** avec les brackets ('{' et '}')
 > ex: **{red}test{eoc}** affichera **"test" en rouge**, **{{green}}** affichera le mot **"{green}"** simplement.
 
-***************************
 
 # TEST
 
 > $> make
-> $> make test
+
+>$> make test
+
 > $> ./a.out
