@@ -24,6 +24,6 @@ Bonus :
 
 > $> make
 
->$> make test
+>$> make test     (ou 'make test FLAGS=no' pour les undefined behavior)
 
 > $> ./a.out
