@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:54:34 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 14:50:11 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/03/20 10:24:52 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ static char	*color_parser(t_buffer *buf, const t_color *tab_color, char *tab,
 char		*ft_tab_color(t_buffer *buf, char *format)
 {
 	char					tab[20];
-	static const t_color	tab_color[] = {{ "eoc", "\033[0m" },
+	static const t_color	tab_color[] = {{ "eoc", "\033[00m" },
 		{ "black", "\033[30m" },
 		{ "red", "\033[31m" },
 		{ "green", "\033[32m" },

@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:18 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 12:06:25 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/03/20 10:22:08 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ int		ft_printf(const char *format, ...)
 	t_buffer	buf;
 	int			ret;
 	va_list		ap;
+	int			clr_nbr;
 
 	buffer_init(&buf);
 	buf.fd = 1;
 	va_start(ap, format);
+	clr_nbr = ft_color_counter(ap, (char*)format);
 	if ((ret = ft_core_printf(&buf, (char*)format, ap)) < 0)
 		return (-1);
 	va_end(ap);
 	write(buf.fd, buf.str, ret);
 	ft_memdel((void**)&buf.str);
-	return (ret - buf.clr_len);
+	return (ret - (clr_nbr * COLOR_LEN));
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:22:31 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 12:01:32 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/03/15 14:25:26 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 
 	while ((conv = ft_strchr(format, '%')) != NULL)
 	{
-		format = color_applier1(buf, format);
+//		format = color_applier1(buf, format);
 		ft_bzero(&fmt, sizeof(fmt));
 		buffer_add_str(buf, format, conv - format);
 		format = parse_all(conv + 1, &fmt, ap);
@@ -89,9 +89,9 @@ int			ft_core_printf(t_buffer *buf, char *format, va_list ap)
 				return (-1);
 			}
 		}
-		format = color_applier1(buf, format);
+//		format = color_applier1(buf, format);
 	}
-	format = color_applier2(buf, format);
+//	format = color_applier2(buf, format);
 	if (*format != '\0')
 		buffer_add_str(buf, format, ft_strlen(format));
 	return (buf->len);

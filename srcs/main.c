@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:24:44 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/26 18:23:00 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/03/20 10:22:03 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int		main(void)
 	printf("ft_as_ret = %d\n", ft_asprintf(&str2, "|%S|\n", L"我是一只猫。"));
 	printf("str1_ret = %d\n", printf("|str1 = %s|\n", str1));
 	printf("str2_ret = %d\n", printf("|str2 = %s|\n", str2));
-	printf("%d\n", ft_printf("|{magenta}%s{eoc}{cyan}{{red}}{eoc}{green}ONUR{eoc}{yellow}{1234567890987654321}{}{eoc}{123}{{green}}{red}realred{eoc}|\n", "magenta"));
+//	printf("%d\n", ft_printf("|{magenta}%s{eoc}{cyan}{{red}}{eoc}{green}ONUR{eoc}{yellow}{1234567890987654321}{}{eoc}{123}{{green}}{red}%drealred{eoc}|\n", "magenta", 25));
+	printf("%d\n", ft_printf("Test couleurs : %sBleu%s, %sViolet%s, %sRouge%s, %sNoir%s, Rien\n", BLUE, EOC, MAGENTA, EOC, RED, EOC, BLACK, EOC));
+	printf("%d\n", ft_printf("Test couleurs : Bleu, Violet, Rouge, Noir, Rien\n"));
 	int		var = 125;
 	printf("%d\n", printf("|PRINTF : s = %s, p = %p, d = %d|\n", "test", &var, var));
 	printf("%d\n", ft_printf("|FT_PRINTF : s = %s, p = %p, d = %d|\n", "test", &var, var));

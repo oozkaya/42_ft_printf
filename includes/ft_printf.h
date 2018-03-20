@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:20:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/02/23 12:03:49 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/03/20 10:21:57 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
 # include "libft.h"
 # include <stdarg.h>
 # define BUFFER_SIZE 4096
+
+//COLORS
+# define EOC "\033[00m"
+# define BLACK "\033[30m"
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define MAGENTA "\033[35m"
+# define CYAN "\033[36m"
+# define GRAY "\033[37m"
+
+# define COLOR_LEN 5
 
 typedef struct	s_format
 {
@@ -59,6 +72,8 @@ typedef struct	s_color
 	char	*clr;
 	char	*clr_code;
 }				t_color;
+
+int				ft_color_counter(va_list ap, char *format);
 
 char			*ft_tab_color(t_buffer *buf, char *format);
 char			*color_applier1(t_buffer *buf, char *format);
