@@ -19,8 +19,8 @@ Bonus :
 * **couleurs** avec flag %s.
 > ex: **ft_printf("%stest%s", RED, EOC)** affichera **"test" en rouge**.
 
-~~* **couleurs** avec les brackets ('{' et '}')
-> ex: **{red}test{eoc}** affichera **"test" en rouge**, **{{green}}** affichera le mot **"{green}"** simplement.~~
+~~* **couleurs** avec les brackets ('{' et '}')~~
+> ~~ex: **{red}test{eoc}** affichera **"test" en rouge**, **{{green}}** affichera le mot **"{green}"** simplement.~~
 
 
 # Utilisation
