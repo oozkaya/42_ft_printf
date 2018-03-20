@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:20:43 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/03/20 10:21:57 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/03/20 10:37:40 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdarg.h>
 # define BUFFER_SIZE 4096
 
-//COLORS
 # define EOC "\033[00m"
 # define BLACK "\033[30m"
 # define RED "\033[31m"

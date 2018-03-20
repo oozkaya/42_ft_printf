@@ -6,7 +6,7 @@
 #    By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:20:23 by oozkaya           #+#    #+#              #
-#    Updated: 2018/03/20 10:25:24 by oozkaya          ###   ########.fr        #
+#    Updated: 2018/03/20 10:36:06 by oozkaya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ SRC_NAME = \
 			colors.c\
 			color_appliers.c\
 			\
-			colorsV2.c\
+			colors_v2.c\
 			\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colorsV2.c                                         :+:      :+:    :+:   */
+/*   colors_v2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 10:23:41 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/03/20 10:24:14 by oozkaya          ###   ########.fr       */
+/*   Created: 2018/03/20 10:35:37 by oozkaya           #+#    #+#             */
+/*   Updated: 2018/03/20 10:35:40 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_count_color(va_list ap, char **tab, char *format)
+static int	ft_count_color(va_list ap, char **tab, char *format)
 {
 	va_list aq;
 	char	*arg;
@@ -41,7 +41,7 @@ static int		ft_count_color(va_list ap, char **tab, char *format)
 	return (counter);
 }
 
-int		ft_color_counter(va_list ap, char *format)
+int			ft_color_counter(va_list ap, char *format)
 {
 	static char *color_tab[] = { "\033[00m",
 		"\033[30m",
