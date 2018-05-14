@@ -25,11 +25,6 @@ Bonus :
 
 # Utilisation
 
-> $> git submodule init
-
-> $> git submodule update
-
-puis :
 
 > $> make
 
