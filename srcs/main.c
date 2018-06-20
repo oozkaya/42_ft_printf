@@ -6,7 +6,7 @@
 /*   By: oozkaya <oozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:24:44 by oozkaya           #+#    #+#             */
-/*   Updated: 2018/03/20 10:33:38 by oozkaya          ###   ########.fr       */
+/*   Updated: 2018/06/20 11:19:01 by oozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		main(void)
 	printf("str2_ret = %d\n", printf("|str2 = %s|\n", str2));
 //	printf("%d\n", ft_printf("|{magenta}%s{eoc}{cyan}{{red}}{eoc}{green}ONUR{eoc}{yellow}{1234567890987654321}{}{eoc}{123}{{green}}{red}%drealred{eoc}|\n", "magenta", 25));
 	printf("%d\n", ft_printf("Test couleurs : %sBleu%s, %sViolet%s, %sRouge%s, %sNoir%s, Rien\n", BLUE, EOC, MAGENTA, EOC, RED, EOC, BLACK, EOC));
+	printf("%d\n", ft_printf("Test couleurs : %s%d%s, %s%d%s, %s%d%s, Rien\n", BLUE, 1, EOC, MAGENTA, 2, EOC, RED, 3, EOC));
 	printf("%d\n", ft_printf("Test couleurs : Bleu, Violet, Rouge, Noir, Rien\n"));
 	int		var = 125;
 	printf("%d\n", printf("|PRINTF : s = %s, p = %p, d = %d|\n", "test", &var, var));
